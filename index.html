@@ -841,34 +841,74 @@
        VK NOTIFICATIONS
     ========================= */
 
-    async function notifyVK(text) {
+  async function notifyVK(text) {
+try {
 
-        try {
+    const response = await fetch(
+        "/api/send",
+        {
+            method: "POST",
 
-            await fetch("/api/send", {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
 
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify({
-                    text: text
-                })
-
-            });
-
-        } catch (error) {
-
-            console.log(
-                "VK notification error:",
-                error
-            );
-
+            body: JSON.stringify({
+                text: String(text)
+            })
         }
+    );
 
+
+    const data =
+        await response.json().catch(() => null);
+
+
+    if (!response.ok) {
+
+        console.error(
+            "Server returned error:",
+            response.status,
+            data
+        );
+
+        return false;
     }
+
+
+    if (!data || !data.success) {
+
+        console.error(
+            "VK notification failed:",
+            data
+        );
+
+        return false;
+    }
+
+
+    console.log(
+        "VK notification sent:",
+        data
+    );
+
+    return true;
+
+
+} catch (error) {
+
+    console.error(
+        "Fetch error:",
+        error
+    );
+
+    return false;
+}
+
+
+}
+
 
 
     /* =========================
@@ -952,154 +992,85 @@
     );
 
 
-    /* =========================
-       DATE
-    ========================= */
+   /* =========================
+DATE
+========================= */
 
-    const availableDate =
-        document.getElementById("availableDate");
+const availableDate =
+document.getElementById("availableDate");
 
-    const dateStatus =
-        document.getElementById("dateStatus");
+const dateStatus =
+document.getElementById("dateStatus");
+
+function formatDate(date) {
 
 
-    function formatDate(date) {
+return date.toLocaleDateString(
+    "ru-RU",
+    {
+        day: "numeric",
+        month: "long",
+        year: "numeric"
+    }
+);
 
-        return date.toLocaleDateString(
-            "ru-RU",
-            {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-            }
+
+}
+
+/* =========================
+DATE CHANGE
+========================= */
+
+availableDate.addEventListener(
+"change",
+function () {
+
+
+    const value = this.value;
+
+
+    if (!value) {
+
+        dateStatus.textContent = "";
+
+        dateStatus.classList.remove(
+            "visible"
         );
 
+        return;
     }
 
 
-    function toInputDate(date) {
-
-        const year =
-            date.getFullYear();
-
-        const month =
-            String(
-                date.getMonth() + 1
-            ).padStart(2, "0");
-
-        const day =
-            String(
-                date.getDate()
-            ).padStart(2, "0");
-
-        return `${year}-${month}-${day}`;
-
-    }
+    const selectedDate =
+        new Date(
+            value + "T00:00:00"
+        );
 
 
-    /* =========================
-       DATE RANGE
-    ========================= */
+    const formattedDate =
+        formatDate(selectedDate);
 
-    const todayDate = new Date();
 
-    todayDate.setHours(
-        0, 0, 0, 0
+    dateStatus.textContent =
+        `Выбрана дата: ${formattedDate}`;
+
+    dateStatus.classList.add(
+        "visible"
     );
 
 
-    const maxDate =
-        new Date(todayDate);
-
-    maxDate.setDate(
-        maxDate.getDate() + 10
+    notifyVK(
+        `Она выбрала дату\n\n` +
+        `Дата: ${formattedDate}\n` +
+        `Сессия: ${sessionId}\n` +
+        `Время: ${new Date().toLocaleString("ru-RU")}`
     );
 
-
-    availableDate.min =
-        toInputDate(todayDate);
-
-    availableDate.max =
-        toInputDate(maxDate);
+}
 
 
-    /* =========================
-       DATE CHANGE
-    ========================= */
+);
 
-    availableDate.addEventListener(
-        "change",
-        function() {
-
-            const value =
-                this.value;
-
-            if (!value) {
-
-                dateStatus.textContent = "";
-
-                dateStatus.classList.remove(
-                    "visible"
-                );
-
-                return;
-            }
-
-
-            const selectedDate =
-                new Date(
-                    value + "T00:00:00"
-                );
-
-
-            if (
-                selectedDate < todayDate ||
-                selectedDate > maxDate
-            ) {
-
-                this.value = "";
-
-                dateStatus.textContent =
-                    "Можно выбрать только ближайшие 10 дней";
-
-                dateStatus.classList.add(
-                    "visible"
-                );
-
-
-                notifyVK(
-                    `Попыталась выбрать недопустимую дату\n\n` +
-                    `Разрешённый период: ` +
-                    `${formatDate(todayDate)} — ` +
-                    `${formatDate(maxDate)}\n\n` +
-                    `Сессия: ${sessionId}`
-                );
-
-                return;
-            }
-
-
-            const formattedDate =
-                formatDate(selectedDate);
-
-
-            dateStatus.textContent =
-                `Выбрана дата: ${formattedDate}`;
-
-            dateStatus.classList.add(
-                "visible"
-            );
-
-
-            notifyVK(
-                `Она выбрала дату\n\n` +
-                `Дата: ${formattedDate}\n` +
-                `Сессия: ${sessionId}\n` +
-                `Время: ${new Date().toLocaleString("ru-RU")}`
-            );
-
-        }
-    );
 
 
     /* =========================
