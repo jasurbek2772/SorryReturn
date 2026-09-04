@@ -841,72 +841,52 @@
        VK NOTIFICATIONS
     ========================= */
 
-  async function notifyVK(text) {
-try {
-
-    const response = await fetch(
-        "/api/send",
-        {
+async function notifyVK(text) {
+    try {
+        const response = await fetch("/api/send", {
             method: "POST",
-
             headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Content-Type": "application/json"
             },
-
             body: JSON.stringify({
                 text: String(text)
             })
+        });
+
+        const data = await response.json().catch(() => null);
+
+        if (!response.ok) {
+            console.error(
+                "VK server error:",
+                response.status,
+                data
+            );
+            return false;
         }
-    );
 
+        if (!data || !data.success) {
+            console.error(
+                "VK notification failed:",
+                data
+            );
+            return false;
+        }
 
-    const data =
-        await response.json().catch(() => null);
+        console.log(
+            "VK notification sent successfully:",
+            data.result
+        );
 
+        return true;
 
-    if (!response.ok) {
-
+    } catch (error) {
         console.error(
-            "Server returned error:",
-            response.status,
-            data
+            "VK connection error:",
+            error
         );
 
         return false;
     }
-
-
-    if (!data || !data.success) {
-
-        console.error(
-            "VK notification failed:",
-            data
-        );
-
-        return false;
-    }
-
-
-    console.log(
-        "VK notification sent:",
-        data
-    );
-
-    return true;
-
-
-} catch (error) {
-
-    console.error(
-        "Fetch error:",
-        error
-    );
-
-    return false;
-}
-
-
 }
 
 
