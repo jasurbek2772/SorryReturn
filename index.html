@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<meta property="og:title" content="Давай всё заново">
+<meta property="og:description" content="Мне хочется кое-что сказать">
+<meta property="og:type" content="website">
+
+<title>Давай всё заново</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+>
+
+<style>
+
+    :root {
+        --blue: #91b9d2;
+        --blue-dark: #628eaa;
+        --blue-light: #dcebf3;
+
+        --pink: #d9aeb9;
+        --pink-light: #f1dfe4;
+
+        --bg: #edf5f8;
+        --bg-soft: #f7f5f7;
+
+        --text: #34434b;
+        --text-soft: #65747b;
+
+        --white: rgba(255,255,255,.68);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background:
+            linear-gradient(
+                135deg,
+                var(--bg) 0%,
+                var(--bg-soft) 48%,
+                #f5e8ec 100%
+            );
+
+        color: var(--text);
+        font-family: "Montserrat", sans-serif;
+        overflow-x: hidden;
+    }
+
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background:
+            radial-gradient(
+                circle at 30% 35%,
+                #dceef7 0%,
+                #edf5f8 42%,
+                #f2e3e8 100%
+            );
+
+        transition:
+            opacity 1.3s ease,
+            visibility 1.3s ease;
+    }
+
+    .intro.hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .intro-content {
+        text-align: center;
+        overflow: hidden;
+        padding: 30px;
+    }
+
+    .intro-small {
+        font-size: 10px;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: var(--blue-dark);
+
+        opacity: 0;
+
+        animation:
+            fadeSmall 1.4s ease forwards;
+    }
+
+    .intro-title {
+        margin-top: 18px;
+
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: clamp(48px, 9vw, 100px);
+
+        font-weight: 500;
+
+        color: var(--text);
+
+        white-space: nowrap;
+
+        opacity: 0;
+        transform: translateX(-100%);
+
+        animation:
+            titleReveal 2s
+            cubic-bezier(.22,.61,.36,1)
+            .4s
+            forwards;
+    }
+
+    .intro-line {
+        width: 0;
+        height: 1px;
+
+        margin: 20px auto 0;
+
+        background:
+            linear-gradient(
+                90deg,
+                var(--blue),
+                var(--pink)
+            );
+
+        animation:
+            lineReveal 1.2s ease 1.7s forwards;
+    }
+
+
+    @keyframes titleReveal {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeSmall {
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes lineReveal {
+        to {
+            width: 180px;
+        }
+    }
+
+
+    /* =========================
+       DECOR
+    ========================= */
+
+    .decor {
+        position: absolute;
+
+        width: 320px;
+        height: 320px;
+
+        border: 1px solid rgba(98,142,170,.12);
+
+        border-radius: 50%;
+    }
+
+    .decor.one {
+        top: -160px;
+        left: -130px;
+    }
+
+    .decor.two {
+        right: -160px;
+        bottom: -160px;
+
+        border-color: rgba(217,174,185,.15);
+    }
+
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+        opacity: 0;
+        transform: translateY(30px);
+
+        animation:
+            mainAppear 1.5s ease 2.7s forwards;
+    }
+
+    @keyframes mainAppear {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    section {
+        width: min(900px, calc(100% - 40px));
+        margin: auto;
+    }
+
+
+    /* =========================
+       TEXT SECTION
+    ========================= */
+
+    .hero {
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+
+        padding: 80px 0;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 760px;
+
+        padding: 75px 55px;
+
+        border: 1px solid rgba(98,142,170,.18);
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.62),
+                rgba(220,235,243,.48),
+                rgba(241,223,228,.35)
+            );
+
+        box-shadow:
+            0 30px 80px rgba(75,105,120,.10);
+
+        position: relative;
+
+        backdrop-filter: blur(8px);
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+        content: "";
+
+        position: absolute;
+
+        width: 35px;
+        height: 35px;
+
+        border-color: rgba(98,142,170,.45);
+        border-style: solid;
+    }
+
+    .hero-card::before {
+        top: 18px;
+        left: 18px;
+
+        border-width: 1px 0 0 1px;
+    }
+
+    .hero-card::after {
+        right: 18px;
+        bottom: 18px;
+
+        border-width: 0 1px 1px 0;
+
+        border-color: rgba(217,174,185,.55);
+    }
+
+    .eyebrow {
+        font-size: 10px;
+
+        letter-spacing: 5px;
+
+        text-transform: uppercase;
+
+        color: var(--blue-dark);
+
+        margin-bottom: 25px;
+    }
+
+    h1 {
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: clamp(48px, 7vw, 78px);
+
+        line-height: .95;
+
+        font-weight: 500;
+
+        color: var(--text);
+    }
+
+    .hero-text {
+        max-width: 610px;
+
+        margin: 38px auto 0;
+
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: clamp(24px, 3.5vw, 31px);
+
+        line-height: 1.55;
+
+        color: var(--text);
+    }
+
+
+    /* =========================
+       SCROLL
+    ========================= */
+
+    .scroll-hint {
+        display: flex;
+        justify-content: center;
+
+        padding: 10px 0 50px;
+
+        margin-top: -80px;
+
+        position: relative;
+        z-index: 5;
+    }
+
+    .scroll-arrow {
+        width: 28px;
+        height: 48px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 6px;
+
+        cursor: pointer;
+
+        opacity: .65;
+    }
+
+    .scroll-arrow span {
+        display: block;
+
+        width: 11px;
+        height: 11px;
+
+        border-bottom: 1px solid var(--blue-dark);
+        border-right: 1px solid var(--blue-dark);
+
+        transform: rotate(45deg);
+
+        animation:
+            arrowBounce 1.8s infinite ease-in-out;
+    }
+
+    .scroll-arrow span:nth-child(2) {
+        animation-delay: .2s;
+        opacity: .55;
+    }
+
+    .scroll-arrow span:nth-child(3) {
+        animation-delay: .4s;
+        opacity: .35;
+    }
+
+    @keyframes arrowBounce {
+        0% {
+            opacity: 0;
+            transform: rotate(45deg) translate(-7px,-7px);
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: rotate(45deg) translate(7px,7px);
+        }
+    }
+
+
+    /* =========================
+       DATE SECTION
+    ========================= */
+
+    .date-section {
+        min-height: 100vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 100px 0 150px;
+
+        text-align: center;
+    }
+
+    .date-box {
+        width: 100%;
+        max-width: 720px;
+
+        padding: 65px 45px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(220,235,243,.65),
+                rgba(255,255,255,.65),
+                rgba(241,223,228,.48)
+            );
+
+        border:
+            1px solid rgba(98,142,170,.16);
+
+        box-shadow:
+            0 30px 80px rgba(75,105,120,.10);
+    }
+
+    .section-label {
+        font-size: 10px;
+
+        letter-spacing: 5px;
+
+        text-transform: uppercase;
+
+        color: var(--blue-dark);
+
+        margin-bottom: 20px;
+    }
+
+    .section-title {
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: clamp(45px, 6vw, 65px);
+
+        font-weight: 500;
+
+        color: var(--text);
+
+        margin-bottom: 25px;
+    }
+
+    .date-description {
+        max-width: 500px;
+
+        margin: auto;
+
+        font-size: 13px;
+
+        line-height: 1.9;
+
+        font-weight: 300;
+
+        color: var(--text-soft);
+    }
+
+    .date-form {
+        max-width: 470px;
+
+        margin: 40px auto 0;
+
+        text-align: left;
+    }
+
+    .date-label {
+        display: block;
+
+        text-align: center;
+
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: 29px;
+
+        color: var(--text);
+
+        margin-bottom: 15px;
+    }
+
+    .date-hint {
+        text-align: center;
+
+        font-size: 11px;
+
+        line-height: 1.6;
+
+        color: var(--text-soft);
+
+        margin-bottom: 22px;
+    }
+
+    .date-input {
+        width: 100%;
+
+        padding: 17px 20px;
+
+        background: rgba(255,255,255,.65);
+
+        border:
+            1px solid rgba(98,142,170,.25);
+
+        color: var(--text);
+
+        font-family: "Montserrat", sans-serif;
+
+        font-size: 14px;
+
+        outline: none;
+
+        transition:
+            border-color .3s ease,
+            box-shadow .3s ease;
+    }
+
+    .date-input:focus {
+        border-color: var(--blue-dark);
+
+        box-shadow:
+            0 8px 25px
+            rgba(98,142,170,.10);
+    }
+
+    .date-input::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        opacity: .55;
+    }
+
+    .date-status {
+        min-height: 25px;
+
+        margin-top: 15px;
+
+        text-align: center;
+
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: 21px;
+
+        color: var(--blue-dark);
+
+        opacity: 0;
+
+        transition: opacity .3s ease;
+    }
+
+    .date-status.visible {
+        opacity: 1;
+    }
+
+    .submit-button {
+        margin-top: 30px;
+
+        width: 100%;
+
+        padding: 17px 30px;
+
+        border: none;
+
+        background:
+            linear-gradient(
+                100deg,
+                var(--blue-dark),
+                var(--pink)
+            );
+
+        color: white;
+
+        font-family: "Montserrat", sans-serif;
+
+        font-size: 11px;
+
+        letter-spacing: 3px;
+
+        text-transform: uppercase;
+
+        cursor: pointer;
+
+        transition:
+            transform .3s ease,
+            opacity .3s ease;
+    }
+
+    .submit-button:hover {
+        transform: translateY(-3px);
+        opacity: .9;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        padding: 30px;
+
+        text-align: center;
+
+        font-family: "Cormorant Garamond", serif;
+
+        font-size: 17px;
+
+        color: var(--text-soft);
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 650px) {
+
+        section {
+            width: min(100% - 25px, 900px);
+        }
+
+        .intro-title {
+            font-size: 55px;
+            white-space: normal;
+        }
+
+        .hero-card {
+            padding: 60px 25px;
+        }
+
+        .hero-text {
+            font-size: 23px;
+        }
+
+        .date-section {
+            padding: 70px 0 100px;
+        }
+
+        .date-box {
+            padding: 50px 23px;
+        }
+
+        .scroll-hint {
+            margin-top: -40px;
+            padding-bottom: 30px;
+        }
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =========================
+     INTRO
+========================= -->
+
+<div class="intro" id="intro">
+
+    <div class="decor one"></div>
+    <div class="decor two"></div>
+
+    <div class="intro-content">
+
+        <div class="intro-small">
+            без лишних слов
+        </div>
+
+        <div class="intro-title">
+            Прости, давай всё заново
+        </div>
+
+        <div class="intro-line"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+    <!-- =========================
+         TEXT
+    ========================= -->
+
+    <section class="hero" id="text">
+
+        <div class="hero-card">
+
+            <div class="eyebrow">
+                Я хочу сказать тебе кое-что
+            </div>
+
+            <h1>
+                Давай попробуем<br>
+                ещё раз
+            </h1>
+
+            <p class="hero-text">
+                Я понимаю, что многое получилось не так,
+                как хотелось бы. И мне правда жаль.
+                <br><br>
+                Я не хочу возвращаться к прошлому
+                или что-то доказывать.
+                Просто хочу начать всё заново —
+                спокойно, без обид, давления
+                и лишних ожиданий.
+                <br><br>
+                Если ты не против,
+                давай просто встретимся
+                и поговорим.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SCROLL
+    ========================= -->
+
+    <div class="scroll-hint" id="scrollHint">
+
+        <div class="scroll-arrow">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         DATE
+    ========================= -->
+
+    <section class="date-section" id="date">
+
+        <div class="date-box">
+
+            <div class="section-label">
+                Следующий шаг
+            </div>
+
+            <h2 class="section-title">
+                Когда ты свободна?
+            </h2>
+
+            <p class="date-description">
+                Выбери любой удобный день в ближайшие 10 дней.
+                Если пока не знаешь — можешь оставить поле пустым.
+            </p>
+
+
+            <div class="date-form">
+
+                <label
+                    for="availableDate"
+                    class="date-label"
+                >
+                    Выбери дату
+                </label>
+
+                <div class="date-hint">
+                    Можно выбрать только ближайшие 10 дней
+                </div>
+
+                <input
+                    type="date"
+                    id="availableDate"
+                    class="date-input"
+                >
+
+                <div
+                    class="date-status"
+                    id="dateStatus"
+                ></div>
+
+                <button
+                    class="submit-button"
+                    id="submitButton"
+                >
+                    Хорошо, договорились
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+    Давай просто начнём сначала.
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+    /* =========================
+       VK NOTIFICATIONS
+    ========================= */
+
+    async function notifyVK(text) {
+
+        try {
+
+            await fetch("/api/send", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    text: text
+                })
+
+            });
+
+        } catch (error) {
+
+            console.log(
+                "VK notification error:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =========================
+       SESSION
+    ========================= */
+
+    let sessionId =
+        sessionStorage.getItem("date_session");
+
+    if (!sessionId) {
+
+        sessionId =
+            Math.random()
+                .toString(36)
+                .substring(2, 10);
+
+        sessionStorage.setItem(
+            "date_session",
+            sessionId
+        );
+
+    }
+
+
+    /* =========================
+       SITE OPEN
+    ========================= */
+
+    notifyVK(
+        `Открыла сайт\n\n` +
+        `Сессия: ${sessionId}\n` +
+        `Время: ${new Date().toLocaleString("ru-RU")}`
+    );
+
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    setTimeout(() => {
+
+        document
+            .getElementById("intro")
+            .classList.add("hidden");
+
+    }, 3500);
+
+
+    /* =========================
+       CLICK TRACKING
+    ========================= */
+
+    document.addEventListener(
+        "click",
+        function(event) {
+
+            const target =
+                event.target.closest(
+                    "button"
+                );
+
+            if (!target) {
+                return;
+            }
+
+            const text =
+                target.innerText.trim();
+
+            if (!text) {
+                return;
+            }
+
+            notifyVK(
+                `Действие на сайте\n\n` +
+                `Нажала: «${text}»\n` +
+                `Сессия: ${sessionId}\n` +
+                `Время: ${new Date().toLocaleString("ru-RU")}`
+            );
+
+        }
+    );
+
+
+    /* =========================
+       DATE
+    ========================= */
+
+    const availableDate =
+        document.getElementById("availableDate");
+
+    const dateStatus =
+        document.getElementById("dateStatus");
+
+
+    function formatDate(date) {
+
+        return date.toLocaleDateString(
+            "ru-RU",
+            {
+                day: "numeric",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+    }
+
+
+    function toInputDate(date) {
+
+        const year =
+            date.getFullYear();
+
+        const month =
+            String(
+                date.getMonth() + 1
+            ).padStart(2, "0");
+
+        const day =
+            String(
+                date.getDate()
+            ).padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+
+    }
+
+
+    /* =========================
+       DATE RANGE
+    ========================= */
+
+    const todayDate = new Date();
+
+    todayDate.setHours(
+        0, 0, 0, 0
+    );
+
+
+    const maxDate =
+        new Date(todayDate);
+
+    maxDate.setDate(
+        maxDate.getDate() + 10
+    );
+
+
+    availableDate.min =
+        toInputDate(todayDate);
+
+    availableDate.max =
+        toInputDate(maxDate);
+
+
+    /* =========================
+       DATE CHANGE
+    ========================= */
+
+    availableDate.addEventListener(
+        "change",
+        function() {
+
+            const value =
+                this.value;
+
+            if (!value) {
+
+                dateStatus.textContent = "";
+
+                dateStatus.classList.remove(
+                    "visible"
+                );
+
+                return;
+            }
+
+
+            const selectedDate =
+                new Date(
+                    value + "T00:00:00"
+                );
+
+
+            if (
+                selectedDate < todayDate ||
+                selectedDate > maxDate
+            ) {
+
+                this.value = "";
+
+                dateStatus.textContent =
+                    "Можно выбрать только ближайшие 10 дней";
+
+                dateStatus.classList.add(
+                    "visible"
+                );
+
+
+                notifyVK(
+                    `Попыталась выбрать недопустимую дату\n\n` +
+                    `Разрешённый период: ` +
+                    `${formatDate(todayDate)} — ` +
+                    `${formatDate(maxDate)}\n\n` +
+                    `Сессия: ${sessionId}`
+                );
+
+                return;
+            }
+
+
+            const formattedDate =
+                formatDate(selectedDate);
+
+
+            dateStatus.textContent =
+                `Выбрана дата: ${formattedDate}`;
+
+            dateStatus.classList.add(
+                "visible"
+            );
+
+
+            notifyVK(
+                `Она выбрала дату\n\n` +
+                `Дата: ${formattedDate}\n` +
+                `Сессия: ${sessionId}\n` +
+                `Время: ${new Date().toLocaleString("ru-RU")}`
+            );
+
+        }
+    );
+
+
+    /* =========================
+       SUBMIT
+    ========================= */
+
+    document
+        .getElementById("submitButton")
+        .addEventListener(
+            "click",
+            function() {
+
+                const selectedDate =
+                    availableDate.value;
+
+
+                let dateMessage;
+
+
+                if (selectedDate) {
+
+                    const date =
+                        new Date(
+                            selectedDate +
+                            "T00:00:00"
+                        );
+
+                    dateMessage =
+                        formatDate(date);
+
+                } else {
+
+                    dateMessage =
+                        "Дату не указала";
+
+                }
+
+
+                notifyVK(
+                    `Похоже, она согласилась\n\n` +
+                    `Доступность: ${dateMessage}\n\n` +
+                    `Сессия: ${sessionId}\n` +
+                    `Время: ${new Date().toLocaleString("ru-RU")}`
+                );
+
+
+                if (selectedDate) {
+
+                    alert(
+                        `Хорошо.\n\n` +
+                        `Я записал ${dateMessage}.`
+                    );
+
+                } else {
+
+                    alert(
+                        `Хорошо.\n\n` +
+                        `Тогда я сам предложу день.`
+                    );
+
+                }
+
+            }
+        );
+
+
+    /* =========================
+       SECTION TRACKING
+    ========================= */
+
+    const sections = {
+
+        text:
+            "Дошла до основного текста",
+
+        date:
+            "Дошла до выбора даты"
+
+    };
+
+
+    const observedSections =
+        new Set();
+
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting &&
+                            !observedSections.has(
+                                entry.target.id
+                            )
+                        ) {
+
+                            observedSections.add(
+                                entry.target.id
+                            );
+
+
+                            const message =
+                                sections[
+                                    entry.target.id
+                                ];
+
+
+                            if (message) {
+
+                                notifyVK(
+                                    `${message}\n\n` +
+                                    `Сессия: ${sessionId}\n` +
+                                    `Время: ${new Date().toLocaleString("ru-RU")}`
+                                );
+
+                            }
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.5
+            }
+
+        );
+
+
+    Object.keys(sections)
+        .forEach(id => {
+
+            const element =
+                document.getElementById(id);
+
+            if (element) {
+
+                observer.observe(element);
+
+            }
+
+        });
+
+
+    /* =========================
+       SCROLL BUTTON
+    ========================= */
+
+    document
+        .getElementById("scrollHint")
+        ?.addEventListener(
+            "click",
+            () => {
+
+                document
+                    .getElementById("date")
+                    ?.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+            }
+        );
+
+
+</script>
+```
+
+</body>
+</html>
