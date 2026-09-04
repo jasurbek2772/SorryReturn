@@ -1,4 +1,3 @@
-```js
 export default async function handler(req, res) {
     // Разрешаем только POST
     if (req.method !== "POST") {
@@ -9,46 +8,50 @@ export default async function handler(req, res) {
     }
 
     try {
-        // Vercel обычно уже парсит JSON в req.body
-        const body = req.body || {};
-        const text = body.text;
+        const { text } = req.body || {};
 
         // Проверяем сообщение
         if (typeof text !== "string" || !text.trim()) {
             return res.status(400).json({
                 success: false,
-                error: "Text is required"
+                error: "Missing text parameter"
             });
         }
 
-        // Ограничиваем размер сообщения
-        if (text.length > 4096) {
-            return res.status(400).json({
-                success: false,
-                error: "Message is too long"
-            });
-        }
-
-        // Переменные окружения Vercel
+        // Переменные Vercel
         const TOKEN = process.env.VK_BOT_TOKEN;
-        const PEER_ID = process.env.VK_PEER_ID;
+        const USER_ID = process.env.VK_USER_ID;
 
-        if (!TOKEN || !PEER_ID) {
-            console.error("VK environment variables are missing");
+        if (!TOKEN || !USER_ID) {
+            console.error(
+                "VK environment variables are missing"
+            );
 
             return res.status(500).json({
                 success: false,
-                error: "VK server configuration error"
+                error: "Server configuration error"
             });
         }
 
-        // Формируем параметры VK API
+        // Параметры VK API
         const params = new URLSearchParams();
 
-        params.set("access_token", TOKEN);
-        params.set("peer_id", String(PEER_ID));
-        params.set("message", text.trim());
-        params.set(
+        params.append(
+            "access_token",
+            TOKEN
+        );
+
+        params.append(
+            "user_id",
+            String(USER_ID)
+        );
+
+        params.append(
+            "message",
+            text.trim()
+        );
+
+        params.append(
             "random_id",
             String(
                 Math.floor(
@@ -56,25 +59,33 @@ export default async function handler(req, res) {
                 )
             )
         );
-        params.set("v", "5.199");
 
-        // Отправляем запрос в VK
+        // Оставляем ту же версию, которая работает
+        params.append(
+            "v",
+            "5.131"
+        );
+
+        // Запрос в VK
         const response = await fetch(
             "https://api.vk.com/method/messages.send",
             {
                 method: "POST",
+
                 headers: {
                     "Content-Type":
                         "application/x-www-form-urlencoded"
                 },
+
                 body: params.toString()
             }
         );
 
         // Получаем ответ VK
-        const data = await response.json();
+        const data =
+            await response.json();
 
-        // HTTP-ошибка
+        // HTTP ошибка
         if (!response.ok) {
             console.error(
                 "VK HTTP error:",
@@ -84,11 +95,12 @@ export default async function handler(req, res) {
 
             return res.status(502).json({
                 success: false,
-                error: "VK request failed"
+                error: "VK HTTP error",
+                status: response.status
             });
         }
 
-        // Ошибка VK API
+        // Ошибка самого VK API
         if (data.error) {
             console.error(
                 "VK API error:",
@@ -100,12 +112,13 @@ export default async function handler(req, res) {
                 error:
                     data.error.error_msg ||
                     "VK API error",
+
                 error_code:
                     data.error.error_code
             });
         }
 
-        // Успешная отправка
+        // Всё успешно
         console.log(
             "VK message sent:",
             data.response
@@ -118,14 +131,15 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error(
-            "VK server error:",
+            "Server error:",
             error
         );
 
         return res.status(500).json({
             success: false,
-            error: "Internal server error"
+            error:
+                error?.message ||
+                "Internal server error"
         });
     }
 }
-```
