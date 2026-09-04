@@ -1,699 +1,1350 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-```
-<meta property="og:title" content="Давай всё заново">
-<meta property="og:description" content="Мне хочется кое-что сказать">
-<meta property="og:type" content="website">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Давай всё заново</title>
+    <meta
+        property="og:title"
+        content="For you ♡"
+    >
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta
+        property="og:description"
+        content="У меня есть предложение..."
+    >
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
-    rel="stylesheet"
->
+    <meta
+        property="og:type"
+        content="website"
+    >
 
-<style>
+    <meta
+        property="og:image"
+        content="https://fdatefdate.vercel.app/11.jpg"
+    >
 
-    :root {
-        --blue: #91b9d2;
-        --blue-dark: #628eaa;
-        --blue-light: #dcebf3;
+    <meta
+        property="og:image:type"
+        content="image/jpeg"
+    >
 
-        --pink: #d9aeb9;
-        --pink-light: #f1dfe4;
+    <meta
+        property="og:image:width"
+        content="1200"
+    >
 
-        --bg: #edf5f8;
-        --bg-soft: #f7f5f7;
+    <meta
+        property="og:image:height"
+        content="1200"
+    >
 
-        --text: #34434b;
-        --text-soft: #65747b;
-
-        --white: rgba(255,255,255,.68);
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        background:
-            linear-gradient(
-                135deg,
-                var(--bg) 0%,
-                var(--bg-soft) 48%,
-                #f5e8ec 100%
-            );
-
-        color: var(--text);
-        font-family: "Montserrat", sans-serif;
-        overflow-x: hidden;
-    }
+    <title>For you ♡</title>
 
 
-    /* =========================
-       INTRO
-    ========================= */
+    <!-- FONTS -->
 
-    .intro {
-        position: fixed;
-        inset: 0;
-        z-index: 9999;
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-        background:
-            radial-gradient(
-                circle at 30% 35%,
-                #dceef7 0%,
-                #edf5f8 42%,
-                #f2e3e8 100%
-            );
-
-        transition:
-            opacity 1.3s ease,
-            visibility 1.3s ease;
-    }
-
-    .intro.hidden {
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    .intro-content {
-        text-align: center;
-        overflow: hidden;
-        padding: 30px;
-    }
-
-    .intro-small {
-        font-size: 10px;
-        letter-spacing: 6px;
-        text-transform: uppercase;
-        color: var(--blue-dark);
-
-        opacity: 0;
-
-        animation:
-            fadeSmall 1.4s ease forwards;
-    }
-
-    .intro-title {
-        margin-top: 18px;
-
-        font-family: "Cormorant Garamond", serif;
-
-        font-size: clamp(48px, 9vw, 100px);
-
-        font-weight: 500;
-
-        color: var(--text);
-
-        white-space: nowrap;
-
-        opacity: 0;
-        transform: translateX(-100%);
-
-        animation:
-            titleReveal 2s
-            cubic-bezier(.22,.61,.36,1)
-            .4s
-            forwards;
-    }
-
-    .intro-line {
-        width: 0;
-        height: 1px;
-
-        margin: 20px auto 0;
-
-        background:
-            linear-gradient(
-                90deg,
-                var(--blue),
-                var(--pink)
-            );
-
-        animation:
-            lineReveal 1.2s ease 1.7s forwards;
-    }
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
 
-    @keyframes titleReveal {
-        to {
-            opacity: 1;
-            transform: translateX(0);
+    <style>
+
+        :root {
+
+            --wine: #7d1f2b;
+            --wine-dark: #58151e;
+
+            --cream: #eee3d0;
+            --cream-light: #f6efe3;
+
+            --pink: #d9a6ad;
+
+            --text: #35251f;
+
+            --gold: #b79a70;
         }
-    }
 
-    @keyframes fadeSmall {
-        to {
-            opacity: 1;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-    }
 
-    @keyframes lineReveal {
-        to {
-            width: 180px;
+
+        html {
+            scroll-behavior: smooth;
         }
-    }
 
 
-    /* =========================
-       DECOR
-    ========================= */
+        body {
 
-    .decor {
-        position: absolute;
+            background:
+                var(--cream-light);
 
-        width: 320px;
-        height: 320px;
+            color:
+                var(--text);
 
-        border: 1px solid rgba(98,142,170,.12);
+            font-family:
+                "Montserrat",
+                sans-serif;
 
-        border-radius: 50%;
-    }
-
-    .decor.one {
-        top: -160px;
-        left: -130px;
-    }
-
-    .decor.two {
-        right: -160px;
-        bottom: -160px;
-
-        border-color: rgba(217,174,185,.15);
-    }
-
-
-    /* =========================
-       MAIN
-    ========================= */
-
-    main {
-        opacity: 0;
-        transform: translateY(30px);
-
-        animation:
-            mainAppear 1.5s ease 2.7s forwards;
-    }
-
-    @keyframes mainAppear {
-        to {
-            opacity: 1;
-            transform: translateY(0);
+            overflow-x:
+                hidden;
         }
-    }
-
-    section {
-        width: min(900px, calc(100% - 40px));
-        margin: auto;
-    }
 
 
-    /* =========================
-       TEXT SECTION
-    ========================= */
+        /* =====================================================
+           INTRO
+        ===================================================== */
 
-    .hero {
-        min-height: 100vh;
+        .intro {
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+            position: fixed;
 
-        text-align: center;
+            inset: 0;
 
-        padding: 80px 0;
-    }
+            z-index: 9999;
 
-    .hero-card {
-        width: 100%;
-        max-width: 760px;
+            display: flex;
 
-        padding: 75px 55px;
+            align-items: center;
 
-        border: 1px solid rgba(98,142,170,.18);
+            justify-content: center;
 
-        background:
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,.62),
-                rgba(220,235,243,.48),
-                rgba(241,223,228,.35)
-            );
+            background:
+                radial-gradient(
+                    circle at center,
+                    #f5ead8 0%,
+                    var(--cream) 50%,
+                    #dfcfb7 100%
+                );
 
-        box-shadow:
-            0 30px 80px rgba(75,105,120,.10);
-
-        position: relative;
-
-        backdrop-filter: blur(8px);
-    }
-
-    .hero-card::before,
-    .hero-card::after {
-        content: "";
-
-        position: absolute;
-
-        width: 35px;
-        height: 35px;
-
-        border-color: rgba(98,142,170,.45);
-        border-style: solid;
-    }
-
-    .hero-card::before {
-        top: 18px;
-        left: 18px;
-
-        border-width: 1px 0 0 1px;
-    }
-
-    .hero-card::after {
-        right: 18px;
-        bottom: 18px;
-
-        border-width: 0 1px 1px 0;
-
-        border-color: rgba(217,174,185,.55);
-    }
-
-    .eyebrow {
-        font-size: 10px;
-
-        letter-spacing: 5px;
-
-        text-transform: uppercase;
-
-        color: var(--blue-dark);
-
-        margin-bottom: 25px;
-    }
-
-    h1 {
-        font-family: "Cormorant Garamond", serif;
-
-        font-size: clamp(48px, 7vw, 78px);
-
-        line-height: .95;
-
-        font-weight: 500;
-
-        color: var(--text);
-    }
-
-    .hero-text {
-        max-width: 610px;
-
-        margin: 38px auto 0;
-
-        font-family: "Cormorant Garamond", serif;
-
-        font-size: clamp(24px, 3.5vw, 31px);
-
-        line-height: 1.55;
-
-        color: var(--text);
-    }
+            transition:
+                opacity 1.2s ease,
+                visibility 1.2s ease;
+        }
 
 
-    /* =========================
-       SCROLL
-    ========================= */
+        .intro.hidden {
 
-    .scroll-hint {
-        display: flex;
-        justify-content: center;
-
-        padding: 10px 0 50px;
-
-        margin-top: -80px;
-
-        position: relative;
-        z-index: 5;
-    }
-
-    .scroll-arrow {
-        width: 28px;
-        height: 48px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        gap: 6px;
-
-        cursor: pointer;
-
-        opacity: .65;
-    }
-
-    .scroll-arrow span {
-        display: block;
-
-        width: 11px;
-        height: 11px;
-
-        border-bottom: 1px solid var(--blue-dark);
-        border-right: 1px solid var(--blue-dark);
-
-        transform: rotate(45deg);
-
-        animation:
-            arrowBounce 1.8s infinite ease-in-out;
-    }
-
-    .scroll-arrow span:nth-child(2) {
-        animation-delay: .2s;
-        opacity: .55;
-    }
-
-    .scroll-arrow span:nth-child(3) {
-        animation-delay: .4s;
-        opacity: .35;
-    }
-
-    @keyframes arrowBounce {
-        0% {
             opacity: 0;
-            transform: rotate(45deg) translate(-7px,-7px);
+
+            visibility: hidden;
         }
 
-        50% {
-            opacity: 1;
+
+        .intro-content {
+
+            text-align:
+                center;
+
+            overflow:
+                hidden;
         }
 
-        100% {
-            opacity: 0;
-            transform: rotate(45deg) translate(7px,7px);
+
+        .intro-small {
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                7px;
+
+            text-transform:
+                uppercase;
+
+            color:
+                var(--wine);
+
+            opacity:
+                0;
+
+            animation:
+                fadeSmall 1.4s ease forwards;
         }
-    }
 
-
-    /* =========================
-       DATE SECTION
-    ========================= */
-
-    .date-section {
-        min-height: 100vh;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        padding: 100px 0 150px;
-
-        text-align: center;
-    }
-
-    .date-box {
-        width: 100%;
-        max-width: 720px;
-
-        padding: 65px 45px;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(220,235,243,.65),
-                rgba(255,255,255,.65),
-                rgba(241,223,228,.48)
-            );
-
-        border:
-            1px solid rgba(98,142,170,.16);
-
-        box-shadow:
-            0 30px 80px rgba(75,105,120,.10);
-    }
-
-    .section-label {
-        font-size: 10px;
-
-        letter-spacing: 5px;
-
-        text-transform: uppercase;
-
-        color: var(--blue-dark);
-
-        margin-bottom: 20px;
-    }
-
-    .section-title {
-        font-family: "Cormorant Garamond", serif;
-
-        font-size: clamp(45px, 6vw, 65px);
-
-        font-weight: 500;
-
-        color: var(--text);
-
-        margin-bottom: 25px;
-    }
-
-    .date-description {
-        max-width: 500px;
-
-        margin: auto;
-
-        font-size: 13px;
-
-        line-height: 1.9;
-
-        font-weight: 300;
-
-        color: var(--text-soft);
-    }
-
-    .date-form {
-        max-width: 470px;
-
-        margin: 40px auto 0;
-
-        text-align: left;
-    }
-
-    .date-label {
-        display: block;
-
-        text-align: center;
-
-        font-family: "Cormorant Garamond", serif;
-
-        font-size: 29px;
-
-        color: var(--text);
-
-        margin-bottom: 15px;
-    }
-
-    .date-hint {
-        text-align: center;
-
-        font-size: 11px;
-
-        line-height: 1.6;
-
-        color: var(--text-soft);
-
-        margin-bottom: 22px;
-    }
-
-    .date-input {
-        width: 100%;
-
-        padding: 17px 20px;
-
-        background: rgba(255,255,255,.65);
-
-        border:
-            1px solid rgba(98,142,170,.25);
-
-        color: var(--text);
-
-        font-family: "Montserrat", sans-serif;
-
-        font-size: 14px;
-
-        outline: none;
-
-        transition:
-            border-color .3s ease,
-            box-shadow .3s ease;
-    }
-
-    .date-input:focus {
-        border-color: var(--blue-dark);
-
-        box-shadow:
-            0 8px 25px
-            rgba(98,142,170,.10);
-    }
-
-    .date-input::-webkit-calendar-picker-indicator {
-        cursor: pointer;
-        opacity: .55;
-    }
-
-    .date-status {
-        min-height: 25px;
-
-        margin-top: 15px;
-
-        text-align: center;
-
-        font-family: "Cormorant Garamond", serif;
-
-        font-size: 21px;
-
-        color: var(--blue-dark);
-
-        opacity: 0;
-
-        transition: opacity .3s ease;
-    }
-
-    .date-status.visible {
-        opacity: 1;
-    }
-
-    .submit-button {
-        margin-top: 30px;
-
-        width: 100%;
-
-        padding: 17px 30px;
-
-        border: none;
-
-        background:
-            linear-gradient(
-                100deg,
-                var(--blue-dark),
-                var(--pink)
-            );
-
-        color: white;
-
-        font-family: "Montserrat", sans-serif;
-
-        font-size: 11px;
-
-        letter-spacing: 3px;
-
-        text-transform: uppercase;
-
-        cursor: pointer;
-
-        transition:
-            transform .3s ease,
-            opacity .3s ease;
-    }
-
-    .submit-button:hover {
-        transform: translateY(-3px);
-        opacity: .9;
-    }
-
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-        padding: 30px;
-
-        text-align: center;
-
-        font-family: "Cormorant Garamond", serif;
-
-        font-size: 17px;
-
-        color: var(--text-soft);
-    }
-
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 650px) {
-
-        section {
-            width: min(100% - 25px, 900px);
-        }
 
         .intro-title {
-            font-size: 55px;
-            white-space: normal;
+
+            margin-top:
+                15px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(70px, 14vw, 150px);
+
+            font-weight:
+                500;
+
+            font-style:
+                italic;
+
+            color:
+                var(--wine);
+
+            white-space:
+                nowrap;
+
+            opacity:
+                0;
+
+            transform:
+                translateX(-100%);
+
+            animation:
+                titleReveal
+                2s
+                cubic-bezier(.22,.61,.36,1)
+                .4s
+                forwards;
         }
+
+
+        .intro-line {
+
+            width:
+                0;
+
+            height:
+                1px;
+
+            margin:
+                15px auto 0;
+
+            background:
+                var(--gold);
+
+            animation:
+                lineReveal
+                1.2s
+                ease
+                1.7s
+                forwards;
+        }
+
+
+        @keyframes titleReveal {
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateX(0);
+            }
+        }
+
+
+        @keyframes fadeSmall {
+
+            to {
+
+                opacity:
+                    1;
+            }
+        }
+
+
+        @keyframes lineReveal {
+
+            to {
+
+                width:
+                    150px;
+            }
+        }
+
+
+        /* =====================================================
+           DECOR
+        ===================================================== */
+
+        .decor {
+
+            position:
+                absolute;
+
+            width:
+                250px;
+
+            height:
+                250px;
+
+            border:
+                1px solid
+                rgba(125,31,43,.12);
+
+            border-radius:
+                50%;
+        }
+
+
+        .decor.one {
+
+            top:
+                -120px;
+
+            left:
+                -100px;
+        }
+
+
+        .decor.two {
+
+            right:
+                -120px;
+
+            bottom:
+                -120px;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        main {
+
+            opacity:
+                0;
+
+            transform:
+                translateY(30px);
+
+            animation:
+                mainAppear
+                1.5s
+                ease
+                2.7s
+                forwards;
+        }
+
+
+        @keyframes mainAppear {
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        section {
+
+            width:
+                min(
+                    1100px,
+                    calc(100% - 40px)
+                );
+
+            margin:
+                auto;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height:
+                100vh;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            padding:
+                80px 0;
+        }
+
 
         .hero-card {
-            padding: 60px 25px;
+
+            width:
+                100%;
+
+            max-width:
+                850px;
+
+            padding:
+                80px 50px;
+
+            border:
+                1px solid
+                rgba(125,31,43,.18);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.45),
+                    rgba(238,227,208,.65)
+                );
+
+            box-shadow:
+                0 30px 80px
+                rgba(73,42,29,.12);
+
+            position:
+                relative;
         }
+
+
+        .hero-card::before,
+        .hero-card::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                35px;
+
+            height:
+                35px;
+
+            border-color:
+                var(--wine);
+
+            border-style:
+                solid;
+        }
+
+
+        .hero-card::before {
+
+            top:
+                18px;
+
+            left:
+                18px;
+
+            border-width:
+                1px 0 0 1px;
+        }
+
+
+        .hero-card::after {
+
+            right:
+                18px;
+
+            bottom:
+                18px;
+
+            border-width:
+                0 1px 1px 0;
+        }
+
+
+        .eyebrow {
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                5px;
+
+            text-transform:
+                uppercase;
+
+            color:
+                var(--wine);
+
+            margin-bottom:
+                25px;
+        }
+
+
+        h1 {
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(55px, 8vw, 90px);
+
+            line-height:
+                .95;
+
+            font-weight:
+                500;
+
+            color:
+                var(--wine);
+        }
+
 
         .hero-text {
-            font-size: 23px;
+
+            max-width:
+                600px;
+
+            margin:
+                35px auto 0;
+
+            font-size:
+                16px;
+
+            line-height:
+                1.9;
+
+            font-weight:
+                300;
         }
 
-        .date-section {
-            padding: 70px 0 100px;
+
+        .heart {
+
+            margin-top:
+                35px;
+
+            color:
+                var(--pink);
+
+            font-size:
+                25px;
         }
 
-        .date-box {
-            padding: 50px 23px;
-        }
+
+        /* =====================================================
+           SCROLL
+        ===================================================== */
 
         .scroll-hint {
-            margin-top: -40px;
-            padding-bottom: 30px;
-        }
-    }
 
-</style>
-```
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            padding:
+                10px 0 40px;
+
+            margin-top:
+                -60px;
+
+            position:
+                relative;
+
+            z-index:
+                5;
+        }
+
+
+        .scroll-arrow {
+
+            width:
+                28px;
+
+            height:
+                48px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            gap:
+                6px;
+
+            cursor:
+                pointer;
+
+            opacity:
+                .7;
+        }
+
+
+        .scroll-arrow span {
+
+            display:
+                block;
+
+            width:
+                12px;
+
+            height:
+                12px;
+
+            border-bottom:
+                2px solid
+                var(--wine);
+
+            border-right:
+                2px solid
+                var(--wine);
+
+            transform:
+                rotate(45deg);
+
+            animation:
+                arrowBounce
+                1.8s
+                infinite
+                ease-in-out;
+
+            opacity:
+                .35;
+        }
+
+
+        .scroll-arrow span:nth-child(2) {
+
+            animation-delay:
+                .2s;
+
+            opacity:
+                .55;
+        }
+
+
+        .scroll-arrow span:nth-child(3) {
+
+            animation-delay:
+                .4s;
+
+            opacity:
+                .8;
+        }
+
+
+        @keyframes arrowBounce {
+
+            0% {
+
+                opacity:
+                    0;
+
+                transform:
+                    rotate(45deg)
+                    translate(-8px,-8px);
+            }
+
+            50% {
+
+                opacity:
+                    1;
+            }
+
+            100% {
+
+                opacity:
+                    0;
+
+                transform:
+                    rotate(45deg)
+                    translate(8px,8px);
+            }
+        }
+
+
+        /* =====================================================
+           INVITATION
+        ===================================================== */
+
+        .invitation {
+
+            padding:
+                100px 0;
+        }
+
+
+        .section-label {
+
+            text-align:
+                center;
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                5px;
+
+            text-transform:
+                uppercase;
+
+            color:
+                var(--wine);
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .section-title {
+
+            text-align:
+                center;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(45px, 6vw, 65px);
+
+            font-weight:
+                500;
+
+            color:
+                var(--wine);
+
+            margin-bottom:
+                60px;
+        }
+
+
+        .invitation-box {
+
+            max-width:
+                800px;
+
+            margin:
+                auto;
+
+            text-align:
+                center;
+
+            padding:
+                55px 45px;
+
+            background:
+                var(--wine);
+
+            color:
+                var(--cream-light);
+
+            box-shadow:
+                0 30px 70px
+                rgba(88,21,30,.2);
+        }
+
+
+        .invitation-box p {
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(25px, 4vw, 34px);
+
+            line-height:
+                1.5;
+        }
+
+
+        .signature {
+
+            margin-top:
+                30px;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                25px;
+
+            font-style:
+                italic;
+
+            color:
+                var(--pink);
+        }
+
+
+        /* =====================================================
+           LOCATION
+        ===================================================== */
+
+        .location {
+
+            padding:
+                100px 0;
+        }
+
+
+        .location-card {
+
+            overflow:
+                hidden;
+
+            background:
+                #e5d8c4;
+
+            border:
+                1px solid
+                rgba(125,31,43,.16);
+        }
+
+
+        #map {
+
+            width:
+                100%;
+
+            height:
+                450px;
+        }
+
+
+        .location-info {
+
+            padding:
+                35px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                30px;
+        }
+
+
+        .location-info h3 {
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                34px;
+
+            font-weight:
+                500;
+
+            color:
+                var(--wine);
+        }
+
+
+        .location-info p {
+
+            margin-top:
+                5px;
+
+            font-size:
+                13px;
+
+            letter-spacing:
+                1px;
+
+            opacity:
+                .75;
+        }
+
+
+        .map-button {
+
+            display:
+                inline-block;
+
+            padding:
+                14px 25px;
+
+            border:
+                1px solid
+                var(--wine);
+
+            color:
+                var(--wine);
+
+            text-decoration:
+                none;
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                2px;
+
+            text-transform:
+                uppercase;
+
+            transition:
+                .3s ease;
+        }
+
+
+        .map-button:hover {
+
+            background:
+                var(--wine);
+
+            color:
+                var(--cream-light);
+        }
+
+
+        /* =====================================================
+           DETAILS
+        ===================================================== */
+
+        .details {
+
+            padding:
+                100px 0
+                150px;
+
+            text-align:
+                center;
+        }
+
+
+        .details-box {
+
+            max-width:
+                700px;
+
+            margin:
+                auto;
+        }
+
+
+        .details-text {
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                clamp(27px, 4vw, 38px);
+
+            line-height:
+                1.45;
+
+            color:
+                var(--text);
+        }
+
+
+        .details-subtext {
+
+            margin-top:
+                25px;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.8;
+
+            font-weight:
+                300;
+
+            opacity:
+                .7;
+        }
+
+
+        /* =====================================================
+           DATE FORM
+        ===================================================== */
+
+        .date-form {
+
+            max-width:
+                500px;
+
+            margin:
+                45px auto 0;
+
+            text-align:
+                left;
+        }
+
+
+        .date-label {
+
+            display:
+                block;
+
+            text-align:
+                center;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                28px;
+
+            color:
+                var(--wine);
+
+            margin-bottom:
+                8px;
+        }
+
+
+        .date-hint {
+
+            text-align:
+                center;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.6;
+
+            opacity:
+                .6;
+
+            margin-bottom:
+                22px;
+        }
+
+
+        .date-input {
+
+            width:
+                100%;
+
+            padding:
+                17px 20px;
+
+            background:
+                rgba(255,255,255,.45);
+
+            border:
+                1px solid
+                rgba(125,31,43,.25);
+
+            color:
+                var(--text);
+
+            font-family:
+                "Montserrat",
+                sans-serif;
+
+            font-size:
+                14px;
+
+            outline:
+                none;
+
+            transition:
+                border-color .3s ease,
+                box-shadow .3s ease;
+        }
+
+
+        .date-input:focus {
+
+            border-color:
+                var(--wine);
+
+            box-shadow:
+                0 8px 25px
+                rgba(125,31,43,.08);
+        }
+
+
+        .date-input::-webkit-calendar-picker-indicator {
+
+            cursor:
+                pointer;
+
+            opacity:
+                .65;
+        }
+
+
+        .date-status {
+
+            min-height:
+                20px;
+
+            margin-top:
+                12px;
+
+            text-align:
+                center;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                20px;
+
+            color:
+                var(--wine);
+
+            opacity:
+                0;
+
+            transition:
+                opacity .3s ease;
+        }
+
+
+        .date-status.visible {
+
+            opacity:
+                1;
+        }
+
+
+        /* =====================================================
+           YES BUTTON
+        ===================================================== */
+
+        .yes-button {
+
+            margin-top:
+                40px;
+
+            display:
+                inline-block;
+
+            padding:
+                17px 40px;
+
+            background:
+                var(--wine);
+
+            color:
+                var(--cream-light);
+
+            text-decoration:
+                none;
+
+            font-size:
+                11px;
+
+            letter-spacing:
+                3px;
+
+            text-transform:
+                uppercase;
+
+            transition:
+                transform .3s ease,
+                background .3s ease;
+        }
+
+
+        .yes-button:hover {
+
+            background:
+                var(--wine-dark);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            padding:
+                30px;
+
+            text-align:
+                center;
+
+            font-family:
+                "Cormorant Garamond",
+                serif;
+
+            font-size:
+                18px;
+
+            color:
+                var(--wine);
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 650px) {
+
+            section {
+
+                width:
+                    min(
+                        100% - 25px,
+                        1100px
+                    );
+            }
+
+
+            .hero-card {
+
+                padding:
+                    65px 25px;
+            }
+
+
+            .hero-text {
+
+                font-size:
+                    14px;
+            }
+
+
+            .invitation,
+            .location {
+
+                padding:
+                    70px 0;
+            }
+
+
+            .details {
+
+                padding:
+                    70px 0
+                    100px;
+            }
+
+
+            .invitation-box {
+
+                padding:
+                    45px 25px;
+            }
+
+
+            .location-info {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+
+
+            #map {
+
+                height:
+                    350px;
+            }
+
+
+            .intro-title {
+
+                font-size:
+                    72px;
+            }
+
+
+            .scroll-hint {
+
+                margin-top:
+                    -40px;
+
+                padding-bottom:
+                    30px;
+            }
+
+
+            .date-form {
+
+                margin-top:
+                    35px;
+            }
+
+
+            .date-label {
+
+                font-size:
+                    25px;
+            }
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-```
-<!-- =========================
-     INTRO
-========================= -->
 
-<div class="intro" id="intro">
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<div
+    class="intro"
+    id="intro"
+>
 
     <div class="decor one"></div>
+
     <div class="decor two"></div>
 
     <div class="intro-content">
 
         <div class="intro-small">
-            без лишних слов
+            something special
         </div>
 
         <div class="intro-title">
-            Прости, давай всё заново
+            For you!
         </div>
 
         <div class="intro-line"></div>
@@ -703,43 +1354,93 @@
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      MAIN
-========================= -->
+===================================================== -->
 
 <main>
 
 
-    <!-- =========================
-         TEXT
-    ========================= -->
+    <!-- =================================================
+         HERO
+    ================================================== -->
 
-    <section class="hero" id="text">
+    <section
+        class="hero"
+        id="hero"
+    >
 
         <div class="hero-card">
 
             <div class="eyebrow">
-                Я хочу сказать тебе кое-что
+                One little invitation
             </div>
 
             <h1>
-                Давай попробуем<br>
-                ещё раз
+                У меня есть<br>
+                предложение...
             </h1>
 
             <p class="hero-text">
-                Я понимаю, что многое получилось не так,
-                как хотелось бы. И мне правда жаль.
+            </p>
+
+            <div class="heart">
+                ♡
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SCROLL
+    ================================================== -->
+
+    <div
+        class="scroll-hint"
+        id="scrollHint"
+    >
+
+        <div class="scroll-arrow">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         INVITATION
+    ================================================== -->
+
+    <section
+        class="invitation"
+        id="invitation"
+    >
+
+        <div class="section-label">
+        </div>
+
+        <h2 class="section-title">
+            Invitation
+        </h2>
+
+        <div class="invitation-box">
+
+            <p>
+                Я хочу пригласить тебя
+                на свидание (просто встреча, как говорили).
                 <br><br>
-                Я не хочу возвращаться к прошлому
-                или что-то доказывать.
-                Просто хочу начать всё заново —
-                спокойно, без обид, давления
-                и лишних ожиданий.
-                <br><br>
-                Если ты не против,
-                давай просто встретимся
-                и поговорим.
+
+                Без лишней официальности —
+                просто без какого-либо давления,
+                спешки или обязательств.
+                Просто поговорим вживую,
+                узнаем друг друга.
             </p>
 
         </div>
@@ -747,42 +1448,92 @@
     </section>
 
 
-    <!-- =========================
-         SCROLL
-    ========================= -->
+    <!-- =================================================
+         LOCATION
+    ================================================== -->
 
-    <div class="scroll-hint" id="scrollHint">
+    <section
+        class="location"
+        id="location"
+    >
 
-        <div class="scroll-arrow">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="section-label">
+            The place
         </div>
 
-    </div>
+        <h2 class="section-title">
+            Где встретимся
+        </h2>
+
+        <div class="location-card">
+
+            <div id="map"></div>
+
+            <div class="location-info">
+
+                <div>
+
+                    <h3>
+                        Парк им. 400-летия<br>
+                        города Красноярска
+                    </h3>
+
+                    <p>
+                        мкр. Взлётка · Красноярск
+                    </p>
+
+                </div>
 
 
-    <!-- =========================
-         DATE
-    ========================= -->
+                <a
+                    class="map-button"
+                    id="mapButton"
+                    href="https://yandex.ru/maps/org/park_imeni_400_letiya_goroda_krasnoyarska/7907152374/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Открыть маршрут
+                </a>
 
-    <section class="date-section" id="date">
-
-        <div class="date-box">
-
-            <div class="section-label">
-                Следующий шаг
             </div>
 
-            <h2 class="section-title">
-                Когда ты свободна?
-            </h2>
+        </div>
 
-            <p class="date-description">
-                Выбери любой удобный день в ближайшие 10 дней.
-                Если пока не знаешь — можешь оставить поле пустым.
+    </section>
+
+
+    <!-- =================================================
+         DETAILS
+    ================================================== -->
+
+    <section
+        class="details"
+        id="details"
+    >
+
+        <div class="details-box">
+
+            <div class="section-label">
+                And one more thing
+            </div>
+
+
+            <div class="details-text">
+                А остальные детали расскажу
+                чуть позже и при встрече.
+            </div>
+
+
+            <p class="details-subtext">
+
+                Во сколько встретиться,
+                куда пойти после
+                и т.д.
+
             </p>
 
+
+            <!-- DATE -->
 
             <div class="date-form">
 
@@ -790,12 +1541,16 @@
                     for="availableDate"
                     class="date-label"
                 >
-                    Выбери дату
+                    Когда ты свободна?
                 </label>
 
+
                 <div class="date-hint">
-                    Можно выбрать только ближайшие 10 дней
+                    Если не укажешь сама —
+                    можешь оставить поле пустым,
+                    я сам решу и сообщу тебе
                 </div>
+
 
                 <input
                     type="date"
@@ -803,19 +1558,24 @@
                     class="date-input"
                 >
 
+
                 <div
                     class="date-status"
                     id="dateStatus"
                 ></div>
 
-                <button
-                    class="submit-button"
-                    id="submitButton"
-                >
-                    Хорошо, договорились
-                </button>
-
             </div>
+
+
+            <!-- YES -->
+
+            <a
+                href="#"
+                class="yes-button"
+                id="yesButton"
+            >
+                Договорились ♡
+            </a>
 
         </div>
 
@@ -826,77 +1586,119 @@
 
 
 <footer>
-    Давай просто начнём сначала.
+    Made especially for you ♡
 </footer>
 
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+<!-- =====================================================
+     YANDEX MAPS
+     
+     ВАЖНО:
+     YOUR_API_KEY нужно заменить на настоящий ключ.
+===================================================== -->
+
+<script
+    src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_API_KEY&lang=ru_RU"
+></script>
+
 
 <script>
 
-
-    /* =========================
+    /* =====================================================
        VK NOTIFICATIONS
-    ========================= */
+    ===================================================== */
 
-async function notifyVK(text) {
-    try {
-        const response = await fetch("/api/send", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                text: String(text)
-            })
-        });
+    async function notifyVK(text) {
 
-        const data = await response.json().catch(() => null);
+        try {
 
-        if (!response.ok) {
-            console.error(
-                "VK server error:",
-                response.status,
-                data
+            const response =
+                await fetch(
+                    "/api/send",
+                    {
+                        method:
+                            "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json",
+
+                            "Accept":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+                                text:
+                                    String(text)
+                            })
+                    }
+                );
+
+
+            const data =
+                await response
+                    .json()
+                    .catch(
+                        () => null
+                    );
+
+
+            if (!response.ok) {
+
+                console.error(
+                    "VK server error:",
+                    response.status,
+                    data
+                );
+
+                return false;
+            }
+
+
+            if (
+                !data ||
+                !data.success
+            ) {
+
+                console.error(
+                    "VK API error:",
+                    data
+                );
+
+                return false;
+            }
+
+
+            console.log(
+                "VK notification sent:",
+                data.result
             );
+
+
+            return true;
+
+        } catch (error) {
+
+            console.error(
+                "VK notification error:",
+                error
+            );
+
             return false;
         }
-
-        if (!data || !data.success) {
-            console.error(
-                "VK notification failed:",
-                data
-            );
-            return false;
-        }
-
-        console.log(
-            "VK notification sent successfully:",
-            data.result
-        );
-
-        return true;
-
-    } catch (error) {
-        console.error(
-            "VK connection error:",
-            error
-        );
-
-        return false;
     }
-}
 
 
-
-    /* =========================
+    /* =====================================================
        SESSION
-    ========================= */
+    ===================================================== */
 
     let sessionId =
-        sessionStorage.getItem("date_session");
+        sessionStorage.getItem(
+            "date_session"
+        );
+
 
     if (!sessionId) {
 
@@ -909,225 +1711,448 @@ async function notifyVK(text) {
             "date_session",
             sessionId
         );
-
     }
 
 
-    /* =========================
+    /* =====================================================
+       CURRENT TIME
+    ===================================================== */
+
+    function currentTime() {
+
+        return new Date()
+            .toLocaleString(
+                "ru-RU"
+            );
+    }
+
+
+    /* =====================================================
        SITE OPEN
-    ========================= */
+    ===================================================== */
 
     notifyVK(
-        `Открыла сайт\n\n` +
+
+        `❤️ Открыла сайт с приглашением\n\n` +
+
         `Сессия: ${sessionId}\n` +
-        `Время: ${new Date().toLocaleString("ru-RU")}`
+
+        `Время: ${currentTime()}`
+
     );
 
 
-    /* =========================
+    /* =====================================================
        INTRO
-    ========================= */
+    ===================================================== */
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        document
-            .getElementById("intro")
-            .classList.add("hidden");
+            document
+                .getElementById(
+                    "intro"
+                )
+                ?.classList
+                .add("hidden");
 
-    }, 3500);
+        },
+        3500
+    );
 
 
-    /* =========================
-       CLICK TRACKING
-    ========================= */
+    /* =====================================================
+       SCROLL BUTTON
+    ===================================================== */
 
-    document.addEventListener(
-        "click",
-        function(event) {
+    document
+        .getElementById(
+            "scrollHint"
+        )
+        ?.addEventListener(
+            "click",
+            () => {
 
-            const target =
-                event.target.closest(
-                    "button"
+                document
+                    .getElementById(
+                        "invitation"
+                    )
+                    ?.scrollIntoView({
+                        behavior:
+                            "smooth"
+                    });
+
+            }
+        );
+
+
+    /* =====================================================
+       MAP BUTTON
+    ===================================================== */
+
+    const mapButton =
+        document.getElementById(
+            "mapButton"
+        );
+
+
+    if (mapButton) {
+
+        mapButton.addEventListener(
+            "click",
+            () => {
+
+                notifyVK(
+
+                    `📍 Открыла маршрут\n\n` +
+
+                    `Место: Парк им. 400-летия города Красноярска\n` +
+
+                    `мкр. Взлётка, Красноярск\n\n` +
+
+                    `Сессия: ${sessionId}\n` +
+
+                    `Время: ${currentTime()}`
+
                 );
 
-            if (!target) {
+            }
+        );
+    }
+
+
+    /* =====================================================
+       DATE
+    ===================================================== */
+
+    const availableDate =
+        document.getElementById(
+            "availableDate"
+        );
+
+
+    const dateStatus =
+        document.getElementById(
+            "dateStatus"
+        );
+
+
+    function formatDate(date) {
+
+        return date.toLocaleDateString(
+            "ru-RU",
+            {
+                day:
+                    "numeric",
+
+                month:
+                    "long",
+
+                year:
+                    "numeric"
+            }
+        );
+    }
+
+
+    function toInputDate(date) {
+
+        const year =
+            date.getFullYear();
+
+
+        const month =
+            String(
+                date.getMonth() + 1
+            ).padStart(
+                2,
+                "0"
+            );
+
+
+        const day =
+            String(
+                date.getDate()
+            ).padStart(
+                2,
+                "0"
+            );
+
+
+        return (
+            `${year}-${month}-${day}`
+        );
+    }
+
+
+    /*
+        Сегодня
+    */
+
+    const todayDate =
+        new Date();
+
+
+    todayDate.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    /*
+        Максимум +10 дней
+    */
+
+    const maxDate =
+        new Date(
+            todayDate
+        );
+
+
+    maxDate.setDate(
+        maxDate.getDate() + 10
+    );
+
+
+    /*
+        Устанавливаем ограничения
+    */
+
+    availableDate.min =
+        toInputDate(
+            todayDate
+        );
+
+
+    availableDate.max =
+        toInputDate(
+            maxDate
+        );
+
+
+    /* =====================================================
+       DATE CHANGE
+    ===================================================== */
+
+    availableDate.addEventListener(
+        "change",
+        function() {
+
+            const value =
+                this.value;
+
+
+            /*
+                Дату убрали
+            */
+
+            if (!value) {
+
+                dateStatus.textContent =
+                    "";
+
+                dateStatus.classList
+                    .remove(
+                        "visible"
+                    );
+
                 return;
             }
 
-            const text =
-                target.innerText.trim();
 
-            if (!text) {
+            const selectedDate =
+                new Date(
+                    value +
+                    "T00:00:00"
+                );
+
+
+            /*
+                Защита от ручного
+                ввода неправильной даты
+            */
+
+            if (
+                selectedDate <
+                    todayDate ||
+
+                selectedDate >
+                    maxDate
+            ) {
+
+                this.value =
+                    "";
+
+                dateStatus.textContent =
+                    "Можно выбрать только ближайшие 10 дней ♡";
+
+                dateStatus.classList
+                    .add(
+                        "visible"
+                    );
+
+
+                notifyVK(
+
+                    `⚠️ Попыталась выбрать недопустимую дату\n\n` +
+
+                    `Разрешённый период:\n` +
+
+                    `${formatDate(todayDate)} — ${formatDate(maxDate)}\n\n` +
+
+                    `Сессия: ${sessionId}\n` +
+
+                    `Время: ${currentTime()}`
+
+                );
+
                 return;
             }
+
+
+            /*
+                Дата корректная
+            */
+
+            const formattedDate =
+                formatDate(
+                    selectedDate
+                );
+
+
+            dateStatus.textContent =
+                `Записала ♡ ${formattedDate}`;
+
+
+            dateStatus.classList
+                .add(
+                    "visible"
+                );
+
 
             notifyVK(
-                `Действие на сайте\n\n` +
-                `Нажала: «${text}»\n` +
+
+                `📅 Она выбрала дату\n\n` +
+
+                `Дата: ${formattedDate}\n\n` +
+
                 `Сессия: ${sessionId}\n` +
-                `Время: ${new Date().toLocaleString("ru-RU")}`
+
+                `Время: ${currentTime()}`
+
             );
 
         }
     );
 
 
-   /* =========================
-DATE
-========================= */
+    /* =====================================================
+       YES BUTTON
+    ===================================================== */
 
-const availableDate =
-document.getElementById("availableDate");
-
-const dateStatus =
-document.getElementById("dateStatus");
-
-function formatDate(date) {
-
-
-return date.toLocaleDateString(
-    "ru-RU",
-    {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-    }
-);
-
-
-}
-
-/* =========================
-DATE CHANGE
-========================= */
-
-availableDate.addEventListener(
-"change",
-function () {
-
-
-    const value = this.value;
-
-
-    if (!value) {
-
-        dateStatus.textContent = "";
-
-        dateStatus.classList.remove(
-            "visible"
-        );
-
-        return;
-    }
-
-
-    const selectedDate =
-        new Date(
-            value + "T00:00:00"
+    const yesButton =
+        document.getElementById(
+            "yesButton"
         );
 
 
-    const formattedDate =
-        formatDate(selectedDate);
+    yesButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
 
 
-    dateStatus.textContent =
-        `Выбрана дата: ${formattedDate}`;
-
-    dateStatus.classList.add(
-        "visible"
-    );
+            const selectedDate =
+                availableDate.value;
 
 
-    notifyVK(
-        `Она выбрала дату\n\n` +
-        `Дата: ${formattedDate}\n` +
-        `Сессия: ${sessionId}\n` +
-        `Время: ${new Date().toLocaleString("ru-RU")}`
-    );
-
-}
+            let dateMessage;
 
 
-);
+            if (selectedDate) {
+
+                const date =
+                    new Date(
+                        selectedDate +
+                        "T00:00:00"
+                    );
 
 
+                dateMessage =
+                    formatDate(
+                        date
+                    );
 
-    /* =========================
-       SUBMIT
-    ========================= */
+            } else {
 
-    document
-        .getElementById("submitButton")
-        .addEventListener(
-            "click",
-            function() {
-
-                const selectedDate =
-                    availableDate.value;
+                dateMessage =
+                    "Дату не указала — решит сам";
+            }
 
 
-                let dateMessage;
+            /*
+                Главное уведомление
+            */
+
+            notifyVK(
+
+                `❤️❤️❤️ ПОХОЖЕ, ОНА СОГЛАСИЛАСЬ!\n\n` +
+
+                `Нажала: «Договорились ♡»\n\n` +
+
+                `📅 Доступность: ${dateMessage}\n\n` +
+
+                `Сессия: ${sessionId}\n` +
+
+                `Время: ${currentTime()}`
+
+            );
 
 
-                if (selectedDate) {
+            /*
+                Ответ на сайте
+            */
 
-                    const date =
-                        new Date(
-                            selectedDate +
-                            "T00:00:00"
-                        );
+            if (selectedDate) {
 
-                    dateMessage =
-                        formatDate(date);
+                alert(
 
-                } else {
+                    "Отлично ♡\n\n" +
+                    "Я записал этот день."
 
-                    dateMessage =
-                        "Дату не указала";
-
-                }
-
-
-                notifyVK(
-                    `Похоже, она согласилась\n\n` +
-                    `Доступность: ${dateMessage}\n\n` +
-                    `Сессия: ${sessionId}\n` +
-                    `Время: ${new Date().toLocaleString("ru-RU")}`
                 );
 
+            } else {
 
-                if (selectedDate) {
+                alert(
 
-                    alert(
-                        `Хорошо.\n\n` +
-                        `Я записал ${dateMessage}.`
-                    );
+                    "Хорошо ♡\n\n" +
+                    "Тогда я сам всё решу."
 
-                } else {
-
-                    alert(
-                        `Хорошо.\n\n` +
-                        `Тогда я сам предложу день.`
-                    );
-
-                }
-
+                );
             }
-        );
+
+        }
+    );
 
 
-    /* =========================
+    /* =====================================================
        SECTION TRACKING
-    ========================= */
+    ===================================================== */
 
     const sections = {
 
-        text:
-            "Дошла до основного текста",
+        invitation:
+            "💌 Дошла до приглашения",
 
-        date:
-            "Дошла до выбора даты"
+        location:
+            "📍 Дошла до блока с местом",
+
+        details:
+            "♡ Дошла до финального блока"
 
     };
 
@@ -1165,64 +2190,150 @@ function () {
                             if (message) {
 
                                 notifyVK(
+
                                     `${message}\n\n` +
+
                                     `Сессия: ${sessionId}\n` +
-                                    `Время: ${new Date().toLocaleString("ru-RU")}`
+
+                                    `Время: ${currentTime()}`
+
                                 );
-
                             }
-
                         }
-
                     }
                 );
-
             },
 
             {
-                threshold: 0.5
+                threshold:
+                    0.5
             }
-
         );
 
 
-    Object.keys(sections)
-        .forEach(id => {
+    Object.keys(
+        sections
+    ).forEach(
+        id => {
 
             const element =
-                document.getElementById(id);
+                document.getElementById(
+                    id
+                );
+
 
             if (element) {
 
-                observer.observe(element);
-
+                observer.observe(
+                    element
+                );
             }
+        }
+    );
 
-        });
+
+    /* =====================================================
+       YANDEX MAP
+    ===================================================== */
+
+    if (
+        typeof ymaps !==
+        "undefined"
+    ) {
+
+        ymaps.ready(
+            initMap
+        );
+
+    } else {
+
+        console.error(
+            "Yandex Maps API is not loaded"
+        );
+    }
 
 
-    /* =========================
-       SCROLL BUTTON
-    ========================= */
+    function initMap() {
 
-    document
-        .getElementById("scrollHint")
-        ?.addEventListener(
-            "click",
-            () => {
+        const location = [
 
-                document
-                    .getElementById("date")
-                    ?.scrollIntoView({
-                        behavior: "smooth"
-                    });
+            56.0405,
+            92.9192
 
-            }
+        ];
+
+
+        const map =
+            new ymaps.Map(
+                "map",
+                {
+
+                    center:
+                        location,
+
+                    zoom:
+                        16,
+
+                    controls:
+                        [
+                            "zoomControl"
+                        ]
+                }
+            );
+
+
+        const placemark =
+            new ymaps.Placemark(
+
+                location,
+
+                {
+
+                    balloonContentHeader:
+                        "Наше место встречи ♡",
+
+                    balloonContentBody:
+                        "Парк им. 400-летия города Красноярска<br>" +
+                        "мкр. Взлётка, Красноярск",
+
+                    hintContent:
+                        "Парк 400-летия"
+
+                },
+
+                {
+
+                    preset:
+                        "islands#redHeartIcon"
+                }
+            );
+
+
+        map.geoObjects.add(
+            placemark
         );
 
 
+        placemark.balloon.open();
+
+
+        /*
+            Уведомление о загрузке карты
+        */
+
+        notifyVK(
+
+            `🗺️ Карта загрузилась\n\n` +
+
+            `Сессия: ${sessionId}\n` +
+
+            `Время: ${currentTime()}`
+
+        );
+    }
+
 </script>
-```
 
 </body>
+
 </html>
